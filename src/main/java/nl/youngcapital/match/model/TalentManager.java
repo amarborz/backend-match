@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 public class TalentManager {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
 	private String naam;
 	private String email;
 	private String telefoonnummer;
