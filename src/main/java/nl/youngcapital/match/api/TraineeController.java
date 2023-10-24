@@ -11,29 +11,31 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.youngcapital.match.model.Trainee;
 import nl.youngcapital.match.model.Vacature;
+import nl.youngcapital.match.service.TraineeService;
 import nl.youngcapital.match.service.VacatureService;
 
 @RestController
-@RequestMapping("api/vacature")
-public class VacatureController {
+@RequestMapping("api/trainee")
+public class TraineeController {
 	
 	@Autowired
-	private VacatureService vacatureService;
+	private TraineeService traineeService;
 	
 	@GetMapping
-	public List<Vacature> findAll() {
-		return vacatureService.findAll();
+	public List<Trainee> findAll() {
+		return traineeService.findAll();
 	}
 	
 	@PostMapping
-	public Vacature create(@RequestBody Vacature vacature) {
-		return this.vacatureService.createOrUpdate(vacature);
+	public Trainee create(@RequestBody Trainee trainee) {
+		return this.traineeService.createOrUpdate(trainee);
 	}
 	
 	@DeleteMapping("{id}")
 	public void deleteById(@PathVariable long id) {
-		this.vacatureService.deleteById(id);
+		this.traineeService.deleteById(id);
 	}
 	
 }

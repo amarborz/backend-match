@@ -1,5 +1,6 @@
 package nl.youngcapital.match.api;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,29 +12,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import nl.youngcapital.match.model.Vacature;
-import nl.youngcapital.match.service.VacatureService;
+import nl.youngcapital.match.model.Opdracht;
+import nl.youngcapital.match.model.Opdrachtgever;
+import nl.youngcapital.match.service.OpdrachtService;
+import nl.youngcapital.match.service.OpdrachtgeverService;
+
 
 @RestController
-@RequestMapping("api/vacature")
-public class VacatureController {
+@RequestMapping("api/opdracht")
+public class OpdrachtController {
 	
 	@Autowired
-	private VacatureService vacatureService;
+	private OpdrachtService opdrachtService;
 	
 	@GetMapping
-	public List<Vacature> findAll() {
-		return vacatureService.findAll();
+	public List<Opdracht> findAll() {
+		return opdrachtService.findAll();
 	}
 	
 	@PostMapping
-	public Vacature create(@RequestBody Vacature vacature) {
-		return this.vacatureService.createOrUpdate(vacature);
+	public Opdracht create(@RequestBody Opdracht opdracht) {
+		return this.opdrachtService.createOrUpdate(opdracht);
 	}
 	
 	@DeleteMapping("{id}")
 	public void deleteById(@PathVariable long id) {
-		this.vacatureService.deleteById(id);
+		this.opdrachtService.deleteById(id);
 	}
 	
 }

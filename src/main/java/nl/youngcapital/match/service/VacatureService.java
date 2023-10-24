@@ -23,4 +23,9 @@ public class VacatureService {
 	public Vacature createOrUpdate(Vacature vacature) {
 		return this.vacatureRepository.save(vacature);
 	}
+	
+	public void deleteById(long id) {
+		this.vacatureRepository.deleteById(id);
+	}
+	
 }
