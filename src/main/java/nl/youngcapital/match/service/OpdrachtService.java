@@ -1,15 +1,14 @@
 package nl.youngcapital.match.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
 import nl.youngcapital.match.model.Opdracht;
-import nl.youngcapital.match.model.Opdrachtgever;
 import nl.youngcapital.match.persistence.OpdrachtRepository;
-import nl.youngcapital.match.persistence.OpdrachtgeverRepository;
 
 @Service
 public class OpdrachtService {
@@ -19,6 +18,10 @@ public class OpdrachtService {
 	
 	public List<Opdracht> findAll() {
 		return opdrachtRepository.findAll();
+	}
+	
+	public Optional<Opdracht> findById(long id) {
+		return this.opdrachtRepository.findById(id);
 	}
 	
 	@Transactional
