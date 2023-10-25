@@ -28,9 +28,6 @@ public class Vacature {
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
-		this.id = id;
-	}
 	public String getStandplaats() {
 		return standplaats;
 	}

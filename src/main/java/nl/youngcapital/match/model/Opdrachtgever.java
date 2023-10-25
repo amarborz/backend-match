@@ -9,7 +9,6 @@ public class Opdrachtgever extends Persoon {
 	public String getOmschrijving() {
 		return omschrijving;
 	}
-
 	public void setOmschrijving(String omschrijving) {
 		this.omschrijving = omschrijving;
 	}

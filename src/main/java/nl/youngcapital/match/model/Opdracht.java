@@ -17,7 +17,6 @@ public class Opdracht {
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
 	
-	
 	public String getStatus() {
 		return status;
 	}
@@ -36,6 +35,8 @@ public class Opdracht {
 	public void setEindDatum(LocalDate eindDatum) {
 		this.eindDatum = eindDatum;
 	}
-
+	public long getId() {
+		return id;
+	}	
 	
 }
