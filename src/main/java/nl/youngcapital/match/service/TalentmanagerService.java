@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.transaction.Transactional;
 import nl.youngcapital.match.model.Talentmanager;
 import nl.youngcapital.match.persistence.TalentmanagerRepository;
 
@@ -24,7 +23,6 @@ public class TalentmanagerService {
 		return this.talentmanagerRepository.findById(id);
 	}
 	
-	@Transactional
 	public Talentmanager createOrUpdate(Talentmanager talentmanager) {
 		return this.talentmanagerRepository.save(talentmanager);
 	}

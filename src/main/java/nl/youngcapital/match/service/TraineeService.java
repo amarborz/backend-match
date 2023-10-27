@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.transaction.Transactional;
 import nl.youngcapital.match.model.Trainee;
 import nl.youngcapital.match.persistence.TraineeRepository;
 
@@ -23,8 +22,7 @@ public class TraineeService {
 	public Optional<Trainee> findById(long id) {
 		return this.traineeRepository.findById(id);
 	}
-	
-	@Transactional
+
 	public Trainee createOrUpdate(Trainee trainee) {
 		return this.traineeRepository.save(trainee);
 	}

@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.transaction.Transactional;
 import nl.youngcapital.match.model.Vacature;
 import nl.youngcapital.match.persistence.VacatureRepository;
 
@@ -23,8 +22,7 @@ public class VacatureService {
 	public Optional<Vacature> findById(long id) {
 		return this.vacatureRepository.findById(id);
 	}
-	
-	@Transactional
+
 	public Vacature createOrUpdate(Vacature vacature) {
 		return this.vacatureRepository.save(vacature);
 	}
