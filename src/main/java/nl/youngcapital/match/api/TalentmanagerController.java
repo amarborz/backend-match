@@ -53,8 +53,8 @@ public class TalentmanagerController {
 	public ResponseEntity<Talentmanager> updateById(@PathVariable long id, @RequestBody Talentmanager input) {
 		Optional<Talentmanager> optionalTarget = this.talentmanagerService.findById(id);
 		
-		if (optionalTarget.isPresent()) {
-			
+		if (optionalTarget.isEmpty()) {
+			return null;
 		}
 	
 		Talentmanager target = optionalTarget.get();

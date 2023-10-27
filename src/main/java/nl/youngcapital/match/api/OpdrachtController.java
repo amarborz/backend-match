@@ -52,8 +52,8 @@ public class OpdrachtController {
 	public ResponseEntity<Opdracht> updateById(@PathVariable long id, @RequestBody Opdracht input) {
 		Optional<Opdracht> optionalTarget = this.opdrachtService.findById(id);
 		
-		if (optionalTarget.isPresent()) {
-			
+		if (optionalTarget.isEmpty()) {
+			return null;
 		}
 	
 		Opdracht target = optionalTarget.get();

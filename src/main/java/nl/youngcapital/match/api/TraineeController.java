@@ -50,8 +50,8 @@ public class TraineeController {
 	public ResponseEntity<Trainee> updateById(@PathVariable long id, @RequestBody Trainee input) {
 		Optional<Trainee> optionalTarget = this.traineeService.findById(id);
 		
-		if (optionalTarget.isPresent()) {
-			
+		if (optionalTarget.isEmpty()) {
+			return null;
 		}
 	
 		Trainee target = optionalTarget.get();
