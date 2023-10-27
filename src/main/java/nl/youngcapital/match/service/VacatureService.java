@@ -1,11 +1,11 @@
 package nl.youngcapital.match.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.transaction.Transactional;
 import nl.youngcapital.match.model.Vacature;
 import nl.youngcapital.match.persistence.VacatureRepository;
 
@@ -19,7 +19,10 @@ public class VacatureService {
 		return vacatureRepository.findAll();
 	}
 	
-	@Transactional
+	public Optional<Vacature> findById(long id) {
+		return this.vacatureRepository.findById(id);
+	}
+
 	public Vacature createOrUpdate(Vacature vacature) {
 		return this.vacatureRepository.save(vacature);
 	}

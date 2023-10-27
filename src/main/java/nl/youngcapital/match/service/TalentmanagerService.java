@@ -1,11 +1,11 @@
 package nl.youngcapital.match.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import jakarta.transaction.Transactional;
 import nl.youngcapital.match.model.Talentmanager;
 import nl.youngcapital.match.persistence.TalentmanagerRepository;
 
@@ -19,7 +19,10 @@ public class TalentmanagerService {
 		return talentmanagerRepository.findAll();
 	}
 	
-	@Transactional
+	public Optional<Talentmanager> findById(long id) {
+		return this.talentmanagerRepository.findById(id);
+	}
+	
 	public Talentmanager createOrUpdate(Talentmanager talentmanager) {
 		return this.talentmanagerRepository.save(talentmanager);
 	}

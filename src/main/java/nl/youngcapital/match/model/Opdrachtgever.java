@@ -4,8 +4,16 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Opdrachtgever extends Persoon {
+	private String plaats;
 	private String omschrijving;
 
+	
+	public String getPlaats() {
+		return plaats;
+	}
+	public void setPlaats(String plaats) {
+		this.plaats = plaats;
+	}
 	public String getOmschrijving() {
 		return omschrijving;
 	}
