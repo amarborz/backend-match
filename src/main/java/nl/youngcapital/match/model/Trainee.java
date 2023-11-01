@@ -9,9 +9,16 @@ public class Trainee extends Persoon {
 	
 	private String richting;
 	private String cv;
+	private String motivatie;
 	private String bio;
 	
 	
+	public String getMotivatie() {
+		return motivatie;
+	}
+	public void setMotivatie(String motivatie) {
+		this.motivatie = motivatie;
+	}
 	public String getRichting() {
 		return richting;
 	}
