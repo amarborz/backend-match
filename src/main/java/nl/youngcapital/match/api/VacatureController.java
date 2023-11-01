@@ -45,8 +45,8 @@ public class VacatureController {
 	public ResponseEntity<Vacature> updateById(@PathVariable long id, @RequestBody Vacature input) {
 		Optional<Vacature> optionalTarget = this.vacatureService.findById(id);
 		
-		if (optionalTarget.isPresent()) {
-			
+		if (optionalTarget.isEmpty()) {
+			return null;
 		}
 	
 		Vacature target = optionalTarget.get();
