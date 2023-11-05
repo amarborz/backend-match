@@ -1,6 +1,10 @@
 package nl.youngcapital.match.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Opdrachtgever extends Persoon {
@@ -20,6 +24,5 @@ public class Opdrachtgever extends Persoon {
 	public void setOmschrijving(String omschrijving) {
 		this.omschrijving = omschrijving;
 	}
-	
 	
 }

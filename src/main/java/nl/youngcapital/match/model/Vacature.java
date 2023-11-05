@@ -24,7 +24,6 @@ public class Vacature {
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
 	
-	
 	public long getId() {
 		return id;
 	}

@@ -1,9 +1,15 @@
 package nl.youngcapital.match.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "Trainee")
 public class Trainee extends Persoon {
 
 	
@@ -12,6 +18,10 @@ public class Trainee extends Persoon {
 	private String motivatie;
 	private String bio;
 	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "talentmanager_id")
+	private Talentmanager talentmanager;
 	
 	public String getMotivatie() {
 		return motivatie;
@@ -36,6 +46,13 @@ public class Trainee extends Persoon {
 	}
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+	
+	public Talentmanager getTalentmanager() {
+		return talentmanager;
+	}
+	public void setTalentmanager(Talentmanager talentmanager) {
+		this.talentmanager = talentmanager;
 	}
 	
 	
