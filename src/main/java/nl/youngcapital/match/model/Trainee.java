@@ -1,11 +1,15 @@
 package nl.youngcapital.match.model;
 
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,6 +26,9 @@ public class Trainee extends Persoon {
 	@ManyToOne
 	@JoinColumn(name = "talentmanager_id")
 	private Talentmanager talentmanager;
+	
+	@OneToMany(mappedBy = "trainee", cascade = CascadeType.ALL)
+	private List<Opdracht> opdrachten;
 	
 	public String getMotivatie() {
 		return motivatie;
@@ -54,6 +61,12 @@ public class Trainee extends Persoon {
 	public void setTalentmanager(Talentmanager talentmanager) {
 		this.talentmanager = talentmanager;
 	}
-	
+	public List<Opdracht> getOpdrachten() {
+		return opdrachten;
+	}
+	public void setOpdrachten(List<Opdracht> opdrachten) {
+		this.opdrachten = opdrachten;
+	}
+
 	
 }
