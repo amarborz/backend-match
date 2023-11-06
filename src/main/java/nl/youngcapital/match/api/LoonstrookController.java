@@ -71,4 +71,10 @@ public class LoonstrookController {
 		this.loonstrookService.deleteById(id);
 	}
 	
+	@PostMapping("/abc/{traineeId}")
+	public Loonstrook create2(@PathVariable("traineeId") long traineeId, @RequestBody Loonstrook loonstrook) {
+		this.loonstrookService.koppelLoonstrookAanTrainee(traineeId, loonstrook);
+		
+		return null;
+	}
 }
