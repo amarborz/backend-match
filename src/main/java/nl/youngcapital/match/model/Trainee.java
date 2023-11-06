@@ -22,7 +22,7 @@ public class Trainee extends Persoon {
 	private String motivatie;
 	private String bio;
 	@OneToMany
-	private List<Loonstrook> loonstrooken;
+	private List<Loonstrook> loonstroken;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -56,7 +56,6 @@ public class Trainee extends Persoon {
 	public void setBio(String bio) {
 		this.bio = bio;
 	}
-
 	public Talentmanager getTalentmanager() {
 		return talentmanager;
 	}
@@ -69,9 +68,13 @@ public class Trainee extends Persoon {
 	public void setOpdrachten(List<Opdracht> opdrachten) {
 		this.opdrachten = opdrachten;
 	}
-
-	public List<Loonstrook> getLoonstrooken() {
-		return loonstrooken;
+	public List<Loonstrook> getLoonstroken() {
+		return loonstroken;
 	}
-	
+	public void setLoonstroken(List<Loonstrook> loonstroken) {
+		this.loonstroken = loonstroken;
+	}
+	public void addLoonstrook(Loonstrook ls) {
+		this.loonstroken.add(ls);
+	}
 }
