@@ -2,13 +2,23 @@ package nl.youngcapital.match.model;
 
 
 import java.time.LocalDate;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "Vacature")
 public class Vacature {
 
 	@Id
@@ -24,6 +34,13 @@ public class Vacature {
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
 	
+	@OneToMany(mappedBy = "vacature", cascade = CascadeType.ALL)
+	private List<Opdracht> opdrachten;
+	
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "opdrachtgever_id")
+	private Opdrachtgever opdrachtgever;
 	
 	public long getId() {
 		return id;
@@ -81,6 +98,20 @@ public class Vacature {
 	}
 	public void setEindDatum(LocalDate eindDatum) {
 		this.eindDatum = eindDatum;
+	}
+	
+	
+	public List<Opdracht> getOpdrachten() {
+		return opdrachten;
+	}
+	public void setOpdrachten(List<Opdracht> opdrachten) {
+		this.opdrachten = opdrachten;
+	}
+	public Opdrachtgever getOpdrachtgever() {
+		return opdrachtgever;
+	}
+	public void setOpdrachtgever(Opdrachtgever opdrachtgever) {
+		this.opdrachtgever = opdrachtgever;
 	}	
 	
 }

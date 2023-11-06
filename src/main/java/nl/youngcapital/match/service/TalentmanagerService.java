@@ -26,7 +26,7 @@ public class TalentmanagerService {
 	public Talentmanager createOrUpdate(Talentmanager talentmanager) {
 		return this.talentmanagerRepository.save(talentmanager);
 	}
-	
+
 	public void deleteById(long id) {
 		this.talentmanagerRepository.deleteById(id);
 	}
