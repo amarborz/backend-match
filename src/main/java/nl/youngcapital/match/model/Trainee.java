@@ -3,6 +3,7 @@ package nl.youngcapital.match.model;
 
 import java.util.List;
 
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -15,12 +16,13 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "Trainee")
 public class Trainee extends Persoon {
-
 	
 	private String richting;
 	private String cv;
 	private String motivatie;
 	private String bio;
+	@OneToMany
+	private List<Loonstrook> loonstrooken;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -54,7 +56,7 @@ public class Trainee extends Persoon {
 	public void setBio(String bio) {
 		this.bio = bio;
 	}
-	
+
 	public Talentmanager getTalentmanager() {
 		return talentmanager;
 	}
@@ -68,5 +70,8 @@ public class Trainee extends Persoon {
 		this.opdrachten = opdrachten;
 	}
 
+	public List<Loonstrook> getLoonstrooken() {
+		return loonstrooken;
+	}
 	
 }
