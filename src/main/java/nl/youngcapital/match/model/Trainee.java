@@ -1,16 +1,20 @@
 package nl.youngcapital.match.model;
 
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Trainee extends Persoon {
-
 	
 	private String richting;
 	private String cv;
 	private String motivatie;
 	private String bio;
+	@OneToMany
+	private List<Loonstrook> loonstrooken;
 	
 	
 	public String getMotivatie() {
@@ -37,6 +41,8 @@ public class Trainee extends Persoon {
 	public void setBio(String bio) {
 		this.bio = bio;
 	}
-	
+	public List<Loonstrook> getLoonstrooken() {
+		return loonstrooken;
+	}
 	
 }
