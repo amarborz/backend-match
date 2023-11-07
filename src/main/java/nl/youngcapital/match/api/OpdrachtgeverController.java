@@ -1,6 +1,5 @@
 package nl.youngcapital.match.api;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.youngcapital.match.api.dto.OpdrachtgeverDTO;
 import nl.youngcapital.match.api.dto.OpdrachtgeverOpdrachtDTO;
 import nl.youngcapital.match.model.Opdrachtgever;
 import nl.youngcapital.match.service.OpdrachtgeverService;
@@ -28,31 +28,18 @@ public class OpdrachtgeverController {
 	private OpdrachtgeverService opdrachtgeverService;
 	
 	@GetMapping
-	public List<Opdrachtgever> findAll() {
-		return opdrachtgeverService.findAll();
-	}
-	
-	@GetMapping("opdracht/{id}")
-	public ResponseEntity<OpdrachtgeverOpdrachtDTO> findById2(@PathVariable long id) {
-		Optional<Opdrachtgever> optionalOpdrachtgever = this.opdrachtgeverService.findById(id);
-		if(optionalOpdrachtgever.isPresent()) {
-			return ResponseEntity.ok(opdrachtgeverService.findOpdrachten(id));
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-		
+	public List<OpdrachtgeverDTO> findAll() {
+		return opdrachtgeverService.getAllOpdrachtgevers();
 	}
 	
 	@GetMapping("{id}")
-	public ResponseEntity<Opdrachtgever> findById(@PathVariable long id) {
-		Optional<Opdrachtgever> optionalOpdrachtgever = this.opdrachtgeverService.findById(id);
-		
+	public ResponseEntity<OpdrachtgeverDTO> findOpdrachtgeverById(@PathVariable long id) {
+		Optional<OpdrachtgeverDTO> optionalOpdrachtgever = this.opdrachtgeverService.findOpdrachtgeverById(id);
 		if(optionalOpdrachtgever.isPresent()) {
-			Opdrachtgever result = optionalOpdrachtgever.get();
-			return ResponseEntity.ok(result);
+			return ResponseEntity.ok(optionalOpdrachtgever.get());
 		} else {
 			return ResponseEntity.notFound().build();
-		}
+		}	
 	}
 	
 	@PostMapping

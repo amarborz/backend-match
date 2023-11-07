@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.youngcapital.match.api.dto.OpdrachtDTO;
 import nl.youngcapital.match.model.Opdracht;
 import nl.youngcapital.match.model.Vacature;
 import nl.youngcapital.match.service.OpdrachtService;
@@ -29,21 +30,20 @@ public class OpdrachtController {
 	@Autowired
 	private VacatureService vacatureService;
 
+	
 	@GetMapping
-	public List<Opdracht> findAll() {
-		return opdrachtService.findAll();
+	public List<OpdrachtDTO> findAllOpdrachten() {
+	    return opdrachtService.getAllOpdrachten();
 	}
 
 	@GetMapping("{id}")
-	public ResponseEntity<Opdracht> findById(@PathVariable long id) {
-		Optional<Opdracht> optionalOpdracht = this.opdrachtService.findById(id);
-
-		if (optionalOpdracht.isPresent()) {
-			Opdracht result = optionalOpdracht.get();
-			return ResponseEntity.ok(result);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	public ResponseEntity<OpdrachtDTO> findOpdrachtById(@PathVariable long id) {
+	    Optional<OpdrachtDTO> optionalOpdracht = opdrachtService.findOpdrachtById(id);
+	    if (optionalOpdracht.isPresent()) {
+	        return ResponseEntity.ok(optionalOpdracht.get());
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
 
 	@PostMapping

@@ -23,12 +23,10 @@ public class Opdracht {
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "vacature_id")
 	private Vacature vacature;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "trainee_id")
 	private Trainee trainee;

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.youngcapital.match.api.dto.TalentmanagerDTO;
 import nl.youngcapital.match.model.Talentmanager;
 import nl.youngcapital.match.model.Trainee;
 import nl.youngcapital.match.service.TalentmanagerService;
@@ -32,22 +33,21 @@ public class TalentmanagerController {
 	private TraineeService traineeService;
 
 	@GetMapping
-	public List<Talentmanager> findAll() {
-		return talentmanagerService.findAll();
+	public List<TalentmanagerDTO> findAll() {
+		return talentmanagerService.getAllTalentmanagers();
 	}
+	
 
 	@GetMapping("{id}")
-	public ResponseEntity<Talentmanager> findById(@PathVariable long id) {
-		Optional<Talentmanager> optionalTalentmanager = this.talentmanagerService.findById(id);
-
-		if (optionalTalentmanager.isPresent()) {
-			Talentmanager result = optionalTalentmanager.get();
-			return ResponseEntity.ok(result);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	public ResponseEntity<TalentmanagerDTO> findTalentmanagerById(@PathVariable long id) {
+	    Optional<TalentmanagerDTO> optionalTalentmanager = this.talentmanagerService.findTalentmanagerById(id);
+	    if (optionalTalentmanager.isPresent()) {
+	        return ResponseEntity.ok(optionalTalentmanager.get());
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
-
+	
 	@PostMapping
 	public Talentmanager create(@RequestBody Talentmanager talentmanager) {
 		return this.talentmanagerService.createOrUpdate(talentmanager);
