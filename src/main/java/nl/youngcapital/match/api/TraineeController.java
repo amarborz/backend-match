@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.youngcapital.match.api.dto.TraineeDTO;
 import nl.youngcapital.match.model.Trainee;
 import nl.youngcapital.match.service.TraineeService;
 
@@ -24,21 +25,20 @@ public class TraineeController {
 	@Autowired
 	private TraineeService traineeService;
 	
-	@GetMapping
-	public List<Trainee> findAll() {
-		return traineeService.findAll();
-	}
 	
+	@GetMapping
+	public List<TraineeDTO> findAllTrainees() {
+	    return traineeService.getAllTrainees();
+	}
+
 	@GetMapping("{id}")
-	public ResponseEntity<Trainee> findById(@PathVariable long id) {
-		Optional<Trainee> optionalTrainee = this.traineeService.findById(id);
-		
-		if(optionalTrainee.isPresent()) {
-			Trainee result = optionalTrainee.get();
-			return ResponseEntity.ok(result);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	public ResponseEntity<TraineeDTO> findTraineeById(@PathVariable long id) {
+	    Optional<TraineeDTO> optionalTrainee = traineeService.findTraineeById(id);
+	    if (optionalTrainee.isPresent()) {
+	        return ResponseEntity.ok(optionalTrainee.get());
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
 	
 	@PostMapping

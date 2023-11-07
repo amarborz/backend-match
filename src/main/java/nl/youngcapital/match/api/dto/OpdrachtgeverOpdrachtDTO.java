@@ -1,17 +1,20 @@
 package nl.youngcapital.match.api.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import nl.youngcapital.match.model.Opdracht;
+import nl.youngcapital.match.model.Vacature;
 import nl.youngcapital.match.model.Opdrachtgever;
 
 public class OpdrachtgeverOpdrachtDTO {
 	private String opdrachtgeverNaam;
-	private LocalDate opdrachtStartDatum;
-	
-	public OpdrachtgeverOpdrachtDTO(Opdracht opdracht, Opdrachtgever opdrachtgever) {
-		opdrachtgeverNaam = opdrachtgever.getNaam();
-		opdrachtStartDatum = opdracht.getStartDatum();
+	private List<Vacature> vacatures;
+	private List<String> opdrachtStandplaats;
+
+	public OpdrachtgeverOpdrachtDTO(List<Vacature> vacatures, Opdrachtgever opdrachtgever) {
+		this.opdrachtgeverNaam = opdrachtgever.getNaam();
+		this.vacatures = vacatures;
 	}
 
 	public String getOpdrachtgeverNaam() {
@@ -22,13 +25,21 @@ public class OpdrachtgeverOpdrachtDTO {
 		this.opdrachtgeverNaam = opdrachtgeverNaam;
 	}
 
-	public LocalDate getOpdrachtStartDatum() {
-		return opdrachtStartDatum;
+	public List<String> getOpdrachtStandplaats() {
+		return opdrachtStandplaats;
 	}
 
-	public void setOpdrachtStartDatum(LocalDate opdrachtStartDatum) {
-		this.opdrachtStartDatum = opdrachtStartDatum;
+	public void setOpdrachtStandplaats(List<String> opdrachtStandplaats) {
+		this.opdrachtStandplaats = opdrachtStandplaats;
 	}
-	
+
+	public List<Vacature> getVacatures() {
+		return vacatures;
+	}
+
+	public void setVacatures(List<Vacature> vacatures) {
+		this.vacatures = vacatures;
+	}
+
 	
 }

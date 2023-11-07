@@ -24,7 +24,6 @@ public class Trainee extends Persoon {
 	@OneToMany
 	private List<Loonstrook> loonstroken;
 	
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "talentmanager_id")
 	private Talentmanager talentmanager;
