@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import nl.youngcapital.match.api.dto.OpdrachtenVanOpdrachtgeverDTO;
 import nl.youngcapital.match.api.dto.OpdrachtgeverDTO;
-import nl.youngcapital.match.api.dto.OpdrachtgeverOpdrachtDTO;
 import nl.youngcapital.match.api.dto.TalentmanagerDTO;
 import nl.youngcapital.match.api.dto.VacatureDTO;
 import nl.youngcapital.match.model.Opdracht;

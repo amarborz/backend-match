@@ -17,6 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import nl.youngcapital.match.api.dto.TalentmanagerDTO;
+import nl.youngcapital.match.api.dto.TraineeDTO;
+import nl.youngcapital.match.api.dto.TraineeStatusVanTalentmanagersDTO;
+import nl.youngcapital.match.api.dto.VacatureDTO;
 import nl.youngcapital.match.model.Talentmanager;
 import nl.youngcapital.match.model.Trainee;
 import nl.youngcapital.match.service.TalentmanagerService;
@@ -53,6 +56,23 @@ public class TalentmanagerController {
 		return this.talentmanagerService.createOrUpdate(talentmanager);
 	}
 
+	@GetMapping("{id}/trainees")
+	public ResponseEntity<List<TraineeDTO>> findTraineesByTalentmanagerId(@PathVariable long id) {
+		List<TraineeDTO> trainees = talentmanagerService.findTraineesByTalentmanagerId(id);
+		if (!trainees.isEmpty()) {
+			return ResponseEntity.ok(trainees);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	 @GetMapping("{id}/trainee-status")
+	    public ResponseEntity<List<TraineeStatusVanTalentmanagersDTO>> getTraineeStatusForTalentmanager(@PathVariable long id) {  
+		 List<TraineeStatusVanTalentmanagersDTO> traineeStatus = talentmanagerService.getTraineeStatusForTalentmanager(id);
+	        return ResponseEntity.ok(traineeStatus);
+	    }
+
+		
 	@PutMapping("{id}")
 	public ResponseEntity<Talentmanager> updateById(@PathVariable long id, @RequestBody Talentmanager input) {
 		Optional<Talentmanager> optionalTarget = this.talentmanagerService.findById(id);

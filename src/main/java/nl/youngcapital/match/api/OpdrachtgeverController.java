@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nl.youngcapital.match.api.dto.OpdrachtenVanOpdrachtgeverDTO;
 import nl.youngcapital.match.api.dto.OpdrachtgeverDTO;
-import nl.youngcapital.match.api.dto.OpdrachtgeverOpdrachtDTO;
 import nl.youngcapital.match.api.dto.VacatureDTO;
 import nl.youngcapital.match.model.Opdrachtgever;
 import nl.youngcapital.match.service.OpdrachtgeverService;

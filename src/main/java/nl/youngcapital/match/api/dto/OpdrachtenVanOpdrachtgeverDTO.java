@@ -12,9 +12,11 @@ public class OpdrachtenVanOpdrachtgeverDTO {
 	private String foto;
 	private String telefoon;
 	private String richting;
+	
 	private String status;
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
+	
 	private String titel;
 	
 	public OpdrachtenVanOpdrachtgeverDTO(Opdracht opdracht, Trainee trainee, Vacature vacature) {
@@ -23,9 +25,11 @@ public class OpdrachtenVanOpdrachtgeverDTO {
 		this.foto = trainee.getFoto();
 		this.telefoon = trainee.getTelefoon();
 		this.richting = trainee.getRichting();
+		
 		this.status = opdracht.getStatus();
 		this.startDatum = opdracht.getStartDatum();
 		this.eindDatum = opdracht.getEindDatum();
+		
 		this.titel = vacature.getTitel();
 	}
 
