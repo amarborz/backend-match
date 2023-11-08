@@ -49,7 +49,8 @@ public class VacatureController {
 		}
 	
 		Vacature target = optionalTarget.get();
-		target.setStandplaats(input.getStandplaats());
+		target.setPlaats(input.getPlaats());
+		target.setAdres(input.getAdres());
 		target.setOmschrijving(input.getOmschrijving());
 		target.setVereisten(input.getVereisten());
 		target.setUren(input.getUren());

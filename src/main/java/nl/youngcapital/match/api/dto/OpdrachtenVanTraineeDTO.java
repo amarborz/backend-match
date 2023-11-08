@@ -8,7 +8,8 @@ import nl.youngcapital.match.model.Vacature;
 
 public class OpdrachtenVanTraineeDTO {
 
-	private String standplaats;
+	private String plaats;
+	private String adres;
 	private String vacatureOmschrijving;
 	private String vereisten;
 	private int uren;
@@ -24,13 +25,13 @@ public class OpdrachtenVanTraineeDTO {
 	private String email;
 	private String foto;
 	private String telefoon;
-	private String plaats;
 	private String bedrijfsOmschrijving;
 	
 	
 	public OpdrachtenVanTraineeDTO(Opdracht opdracht, Vacature vacature, Opdrachtgever opdrachtgever) {
 		
-		this.standplaats = vacature.getStandplaats();
+		this.plaats = vacature.getPlaats();
+		this.adres = vacature.getAdres();
 		this.vacatureOmschrijving = vacature.getOmschrijving();
 		this.vereisten = vacature.getVereisten();
 		this.uren = vacature.getUren();
@@ -48,16 +49,23 @@ public class OpdrachtenVanTraineeDTO {
 		this.email = opdrachtgever.getEmail();
 		this.foto = opdrachtgever.getFoto();
 		this.telefoon = opdrachtgever.getTelefoon();
-		this.plaats = opdrachtgever.getPlaats();
 		this.bedrijfsOmschrijving = opdrachtgever.getOmschrijving();
 	}
 
-	public String getStandplaats() {
-		return standplaats;
+	public String getPlaats() {
+		return plaats;
 	}
 
-	public void setStandplaats(String standplaats) {
-		this.standplaats = standplaats;
+	public void setPlaats(String standplaats) {
+		this.plaats = standplaats;
+	}
+
+	public String getAdres() {
+		return adres;
+	}
+
+	public void setAdres(String adres) {
+		this.adres = adres;
 	}
 
 	public String getVacatureOmschrijving() {
@@ -162,14 +170,6 @@ public class OpdrachtenVanTraineeDTO {
 
 	public void setTelefoon(String telefoon) {
 		this.telefoon = telefoon;
-	}
-
-	public String getPlaats() {
-		return plaats;
-	}
-
-	public void setPlaats(String plaats) {
-		this.plaats = plaats;
 	}
 
 	public String getBedrijfsOmschrijving() {

@@ -7,7 +7,6 @@ public class OpdrachtgeverDTO {
 	private String email;
 	private String foto;
 	private String telefoon;
-	private String plaats;
 	private String omschrijving;
 
 	public OpdrachtgeverDTO(Opdrachtgever opdrachtgever) {
@@ -15,7 +14,6 @@ public class OpdrachtgeverDTO {
 		this.email = opdrachtgever.getEmail();
 		this.foto = opdrachtgever.getFoto();
 		this.telefoon = opdrachtgever.getTelefoon();
-		this.plaats = opdrachtgever.getPlaats();
 		this.omschrijving = opdrachtgever.getOmschrijving();
 	}
 
@@ -49,14 +47,6 @@ public class OpdrachtgeverDTO {
 
 	public void setTelefoon(String telefoon) {
 		this.telefoon = telefoon;
-	}
-
-	public String getPlaats() {
-		return plaats;
-	}
-
-	public void setPlaats(String plaats) {
-		this.plaats = plaats;
 	}
 
 	public String getOmschrijving() {

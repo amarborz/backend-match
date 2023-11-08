@@ -24,7 +24,6 @@ public class TraineeStatusVanTalentmanagersDTO {
 	private String opdrachtgeverEmail;
 	private String opdrachtgeverFoto;
 	private String opdrachtgeverTelefoon;
-	private String opdrachtgeverPlaats;
 	private String opdrachtgeverOmschrijving;
 	
 	public TraineeStatusVanTalentmanagersDTO(Opdracht opdracht, Opdrachtgever opdrachtgever, Trainee trainee, Vacature vacature) {
@@ -44,7 +43,6 @@ public class TraineeStatusVanTalentmanagersDTO {
 		this.opdrachtgeverEmail = opdrachtgever.getEmail();
 		this.opdrachtgeverFoto = opdrachtgever.getFoto();
 		this.opdrachtgeverTelefoon = opdrachtgever.getTelefoon();
-		this.opdrachtgeverPlaats = opdrachtgever.getPlaats();
 		this.opdrachtgeverOmschrijving = opdrachtgever.getOmschrijving();
 	}
 	
@@ -158,14 +156,6 @@ public class TraineeStatusVanTalentmanagersDTO {
 
 	public void setOpdrachtgeverTelefoon(String opdrachtgeverTelefoon) {
 		this.opdrachtgeverTelefoon = opdrachtgeverTelefoon;
-	}
-
-	public String getOpdrachtgeverPlaats() {
-		return opdrachtgeverPlaats;
-	}
-
-	public void setOpdrachtgeverPlaats(String opdrachtgeverPlaats) {
-		this.opdrachtgeverPlaats = opdrachtgeverPlaats;
 	}
 
 	public String getOpdrachtgeverOmschrijving() {

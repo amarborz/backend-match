@@ -24,7 +24,8 @@ public class Vacature {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
-	private String standplaats;
+	private String plaats;
+	private String adres;
 	private String omschrijving;
 	private String vereisten;
 	private int uren;
@@ -44,11 +45,18 @@ public class Vacature {
 	public long getId() {
 		return id;
 	}
-	public String getStandplaats() {
-		return standplaats;
+	public String getPlaats() {
+		return plaats;
 	}
-	public void setStandplaats(String standplaats) {
-		this.standplaats = standplaats;
+	public void setPlaats(String plaats) {
+		this.plaats = plaats;
+	}
+	
+	public String getAdres() {
+		return adres;
+	}
+	public void setAdres(String adres) {
+		this.adres = adres;
 	}
 	public String getOmschrijving() {
 		return omschrijving;

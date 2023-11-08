@@ -82,7 +82,6 @@ public class OpdrachtgeverController {
 		target.setEmail(input.getEmail());
 		target.setFoto(input.getFoto());
 		target.setTelefoon(input.getTelefoon());
-		target.setPlaats(input.getPlaats());
 		target.setOmschrijving(input.getOmschrijving());
 
 		Opdrachtgever updated = this.opdrachtgeverService.createOrUpdate(target);
