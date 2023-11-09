@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import nl.youngcapital.match.model.Vacature;
 
 public class VacatureDTO {
+	private long id;
 	private String plaats;
 	private String adres;
 	private String omschrijving;
@@ -17,6 +18,7 @@ public class VacatureDTO {
 	private LocalDate eindDatum;
 
 	public VacatureDTO(Vacature vacature) {
+		this.id = vacature.getId();
 		this.plaats = vacature.getPlaats();
 		this.adres = vacature.getAdres();
 		this.omschrijving = vacature.getOmschrijving();
@@ -28,6 +30,15 @@ public class VacatureDTO {
 		this.startDatum = vacature.getStartDatum();
 		this.eindDatum = vacature.getEindDatum();
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 
 	public String getPlaats() {
 		return plaats;

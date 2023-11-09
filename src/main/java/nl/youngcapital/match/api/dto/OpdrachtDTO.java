@@ -5,14 +5,25 @@ import java.time.LocalDate;
 import nl.youngcapital.match.model.Opdracht;
 
 public class OpdrachtDTO {
+	private long id;
 	private String status;
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
 	
 	public OpdrachtDTO(Opdracht opdracht) {
+		this.id = opdracht.getId();
 		this.status = opdracht.getStatus();
 		this.startDatum = opdracht.getStartDatum();
 		this.eindDatum = opdracht.getEindDatum();
+	}
+
+	
+	public long getId() {
+		return id;
+	}
+	
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getStatus() {

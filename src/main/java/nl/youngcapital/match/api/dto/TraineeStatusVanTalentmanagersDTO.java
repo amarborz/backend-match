@@ -8,18 +8,22 @@ import nl.youngcapital.match.model.Trainee;
 import nl.youngcapital.match.model.Vacature;
 
 public class TraineeStatusVanTalentmanagersDTO {
+	private long traineeId;
 	private String naam;
 	private String email;
 	private String foto;
 	private String telefoon;
 	private String richting;
 	
+	private long opdrachtId;
 	private String status;
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
 	
+	private long vacatureId;
 	private String titel;
 	
+	private long opdrachtgeverId;
 	private String opdrachtgeverNaam;
 	private String opdrachtgeverEmail;
 	private String opdrachtgeverFoto;
@@ -27,18 +31,22 @@ public class TraineeStatusVanTalentmanagersDTO {
 	private String opdrachtgeverOmschrijving;
 	
 	public TraineeStatusVanTalentmanagersDTO(Opdracht opdracht, Opdrachtgever opdrachtgever, Trainee trainee, Vacature vacature) {
+		this.traineeId = trainee.getId();
 		this.naam = trainee.getNaam();
 		this.email = trainee.getEmail();
 		this.foto = trainee.getFoto();
 		this.telefoon = trainee.getTelefoon();
 		this.richting = trainee.getRichting();
 		
+		this.opdrachtId = opdracht.getId();
 		this.status = opdracht.getStatus();
 		this.startDatum = opdracht.getStartDatum();
 		this.eindDatum = opdracht.getEindDatum();
 		
+		this.vacatureId = vacature.getId();
 		this.titel = vacature.getTitel();
 		
+		this.opdrachtgeverId = opdrachtgever.getId();
 		this.opdrachtgeverNaam = opdrachtgever.getNaam();
 		this.opdrachtgeverEmail = opdrachtgever.getEmail();
 		this.opdrachtgeverFoto = opdrachtgever.getFoto();
@@ -52,6 +60,40 @@ public class TraineeStatusVanTalentmanagersDTO {
 		this.foto = trainee.getFoto();
 		this.telefoon = trainee.getTelefoon();
 		this.richting = trainee.getRichting();
+	}
+
+	
+	
+	public long getTraineeId() {
+		return traineeId;
+	}
+
+	public void setTraineeId(long traineeId) {
+		this.traineeId = traineeId;
+	}
+
+	public long getOpdrachtId() {
+		return opdrachtId;
+	}
+
+	public void setOpdrachtId(long opdrachtId) {
+		this.opdrachtId = opdrachtId;
+	}
+
+	public long getVacatureId() {
+		return vacatureId;
+	}
+
+	public void setVacatureId(long vacatureId) {
+		this.vacatureId = vacatureId;
+	}
+
+	public long getOpdrachtgeverId() {
+		return opdrachtgeverId;
+	}
+
+	public void setOpdrachtgeverId(long opdrachtgeverId) {
+		this.opdrachtgeverId = opdrachtgeverId;
 	}
 
 	public String getNaam() {

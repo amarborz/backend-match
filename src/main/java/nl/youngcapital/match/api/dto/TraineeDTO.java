@@ -3,6 +3,7 @@ package nl.youngcapital.match.api.dto;
 import nl.youngcapital.match.model.Trainee;
 
 public class TraineeDTO {
+	private long id;
 	private String naam;
 	private String email;
 	private String foto;
@@ -14,6 +15,7 @@ public class TraineeDTO {
 	private String woonplaats;
 	
 	public TraineeDTO(Trainee trainee) {
+		this.id = trainee.getId();
 		this.naam = trainee.getNaam();
 		this.email = trainee.getEmail();
 		this.foto = trainee.getFoto();
@@ -24,6 +26,14 @@ public class TraineeDTO {
 		this.motivatie = trainee.getMotivatie();
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 	public String getNaam() {
 		return naam;
 	}
