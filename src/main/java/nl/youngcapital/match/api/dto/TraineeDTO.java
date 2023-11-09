@@ -11,6 +11,7 @@ public class TraineeDTO {
 	private String cv;
 	private String bio;
 	private String motivatie;
+	private String woonplaats;
 	
 	public TraineeDTO(Trainee trainee) {
 		this.naam = trainee.getNaam();
@@ -85,6 +86,14 @@ public class TraineeDTO {
 
 	public void setMotivatie(String motivatie) {
 		this.motivatie = motivatie;
+	}
+
+	public String getWoonplaats() {
+		return woonplaats;
+	}
+
+	public void setWoonplaats(String woonplaats) {
+		this.woonplaats = woonplaats;
 	}
 	
 }

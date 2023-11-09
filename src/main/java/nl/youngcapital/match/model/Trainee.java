@@ -21,6 +21,8 @@ public class Trainee extends Persoon {
 	private String cv;
 	private String motivatie;
 	private String bio;
+	private String woonplaats;
+	
 	@OneToMany
 	private List<Loonstrook> loonstroken;
 	
@@ -54,6 +56,12 @@ public class Trainee extends Persoon {
 	}
 	public void setBio(String bio) {
 		this.bio = bio;
+	}
+	public String getPlaats() {
+		return woonplaats;
+	}
+	public void setPlaats(String plaats) {
+		this.woonplaats = plaats;
 	}
 	public Talentmanager getTalentmanager() {
 		return talentmanager;
