@@ -2,24 +2,37 @@ package nl.youngcapital.match.api.dto;
 
 import java.time.LocalDate;
 
+import nl.youngcapital.match.model.Opdracht;
+import nl.youngcapital.match.model.Opdrachtgever;
 import nl.youngcapital.match.model.Vacature;
 
-public class VacatureDTO {
+public class OpdrachtenVanTraineeDTO {
+
 	private String plaats;
 	private String adres;
-	private String omschrijving;
+	private String vacatureOmschrijving;
 	private String vereisten;
 	private int uren;
 	private String duur;
 	private String titel;
 	private LocalDate publicatieDatum;
+	
+	private String status;
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
-
-	public VacatureDTO(Vacature vacature) {
+	
+	private String naam;
+	private String email;
+	private String foto;
+	private String telefoon;
+	private String bedrijfsOmschrijving;
+	
+	
+	public OpdrachtenVanTraineeDTO(Opdracht opdracht, Vacature vacature, Opdrachtgever opdrachtgever) {
+		
 		this.plaats = vacature.getPlaats();
 		this.adres = vacature.getAdres();
-		this.omschrijving = vacature.getOmschrijving();
+		this.vacatureOmschrijving = vacature.getOmschrijving();
 		this.vereisten = vacature.getVereisten();
 		this.uren = vacature.getUren();
 		this.duur = vacature.getDuur();
@@ -27,6 +40,16 @@ public class VacatureDTO {
 		this.publicatieDatum = vacature.getPublicatieDatum();
 		this.startDatum = vacature.getStartDatum();
 		this.eindDatum = vacature.getEindDatum();
+		
+		this.status = opdracht.getStatus();
+		this.startDatum = opdracht.getStartDatum();
+		this.eindDatum = opdracht.getEindDatum();
+		
+		this.naam = opdrachtgever.getNaam();
+		this.email = opdrachtgever.getEmail();
+		this.foto = opdrachtgever.getFoto();
+		this.telefoon = opdrachtgever.getTelefoon();
+		this.bedrijfsOmschrijving = opdrachtgever.getOmschrijving();
 	}
 
 	public String getPlaats() {
@@ -37,7 +60,6 @@ public class VacatureDTO {
 		this.plaats = standplaats;
 	}
 
-	
 	public String getAdres() {
 		return adres;
 	}
@@ -46,12 +68,12 @@ public class VacatureDTO {
 		this.adres = adres;
 	}
 
-	public String getOmschrijving() {
-		return omschrijving;
+	public String getVacatureOmschrijving() {
+		return vacatureOmschrijving;
 	}
 
-	public void setOmschrijving(String omschrijving) {
-		this.omschrijving = omschrijving;
+	public void setVacatureOmschrijving(String vacatureOmschrijving) {
+		this.vacatureOmschrijving = vacatureOmschrijving;
 	}
 
 	public String getVereisten() {
@@ -94,6 +116,14 @@ public class VacatureDTO {
 		this.publicatieDatum = publicatieDatum;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public LocalDate getStartDatum() {
 		return startDatum;
 	}
@@ -110,4 +140,44 @@ public class VacatureDTO {
 		this.eindDatum = eindDatum;
 	}
 
+	public String getNaam() {
+		return naam;
+	}
+
+	public void setNaam(String naam) {
+		this.naam = naam;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTelefoon() {
+		return telefoon;
+	}
+
+	public void setTelefoon(String telefoon) {
+		this.telefoon = telefoon;
+	}
+
+	public String getBedrijfsOmschrijving() {
+		return bedrijfsOmschrijving;
+	}
+
+	public void setBedrijfsOmschrijving(String bedrijfsOmschrijving) {
+		this.bedrijfsOmschrijving = bedrijfsOmschrijving;
+	}
+	
 }
