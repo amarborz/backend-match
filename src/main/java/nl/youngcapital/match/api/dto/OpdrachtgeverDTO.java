@@ -3,6 +3,7 @@ package nl.youngcapital.match.api.dto;
 import nl.youngcapital.match.model.Opdrachtgever;
 
 public class OpdrachtgeverDTO {
+	private long id;
 	private String naam;
 	private String email;
 	private String foto;
@@ -10,11 +11,20 @@ public class OpdrachtgeverDTO {
 	private String omschrijving;
 
 	public OpdrachtgeverDTO(Opdrachtgever opdrachtgever) {
+		this.id = opdrachtgever.getId();
 		this.naam = opdrachtgever.getNaam();
 		this.email = opdrachtgever.getEmail();
 		this.foto = opdrachtgever.getFoto();
 		this.telefoon = opdrachtgever.getTelefoon();
 		this.omschrijving = opdrachtgever.getOmschrijving();
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getNaam() {
