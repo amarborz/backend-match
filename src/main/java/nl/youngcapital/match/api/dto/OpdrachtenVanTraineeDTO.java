@@ -7,7 +7,7 @@ import nl.youngcapital.match.model.Opdrachtgever;
 import nl.youngcapital.match.model.Vacature;
 
 public class OpdrachtenVanTraineeDTO {
-
+	private long vacatureId;
 	private String plaats;
 	private String adres;
 	private String vacatureOmschrijving;
@@ -17,10 +17,12 @@ public class OpdrachtenVanTraineeDTO {
 	private String titel;
 	private LocalDate publicatieDatum;
 	
+	private long opdrachtId;
 	private String status;
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
 	
+	private long opdrachtgeverId;
 	private String naam;
 	private String email;
 	private String foto;
@@ -29,7 +31,7 @@ public class OpdrachtenVanTraineeDTO {
 	
 	
 	public OpdrachtenVanTraineeDTO(Opdracht opdracht, Vacature vacature, Opdrachtgever opdrachtgever) {
-		
+		this.vacatureId = vacature.getId();
 		this.plaats = vacature.getPlaats();
 		this.adres = vacature.getAdres();
 		this.vacatureOmschrijving = vacature.getOmschrijving();
@@ -41,10 +43,12 @@ public class OpdrachtenVanTraineeDTO {
 		this.startDatum = vacature.getStartDatum();
 		this.eindDatum = vacature.getEindDatum();
 		
+		this.opdrachtId = opdracht.getId();
 		this.status = opdracht.getStatus();
 		this.startDatum = opdracht.getStartDatum();
 		this.eindDatum = opdracht.getEindDatum();
 		
+		this.opdrachtgeverId = opdrachtgever.getId();
 		this.naam = opdrachtgever.getNaam();
 		this.email = opdrachtgever.getEmail();
 		this.foto = opdrachtgever.getFoto();
@@ -52,6 +56,32 @@ public class OpdrachtenVanTraineeDTO {
 		this.bedrijfsOmschrijving = opdrachtgever.getOmschrijving();
 	}
 
+	
+	public long getVacatureId() {
+		return vacatureId;
+	}
+
+	public void setVacatureId(long vacatureId) {
+		this.vacatureId = vacatureId;
+	}
+
+	public long getOpdrachtId() {
+		return opdrachtId;
+	}
+
+	public void setOpdrachtId(long opdrachtId) {
+		this.opdrachtId = opdrachtId;
+	}
+
+	public long getOpdrachtgeverId() {
+		return opdrachtgeverId;
+	}
+
+	public void setOpdrachtgeverId(long opdrachtgeverId) {
+		this.opdrachtgeverId = opdrachtgeverId;
+	}
+
+	
 	public String getPlaats() {
 		return plaats;
 	}

@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import nl.youngcapital.match.api.dto.OpdrachtDTO;
 import nl.youngcapital.match.model.Opdracht;
+import nl.youngcapital.match.model.Trainee;
 import nl.youngcapital.match.model.Vacature;
 import nl.youngcapital.match.service.OpdrachtService;
+import nl.youngcapital.match.service.TraineeService;
 import nl.youngcapital.match.service.VacatureService;
 
 @RestController
@@ -26,24 +28,26 @@ public class OpdrachtController {
 
 	@Autowired
 	private OpdrachtService opdrachtService;
-	
+
 	@Autowired
 	private VacatureService vacatureService;
 
-	
+	@Autowired
+	private TraineeService traineeService;
+
 	@GetMapping
 	public List<OpdrachtDTO> findAllOpdrachten() {
-	    return opdrachtService.getAllOpdrachten();
+		return opdrachtService.getAllOpdrachten();
 	}
 
 	@GetMapping("{id}")
 	public ResponseEntity<OpdrachtDTO> findOpdrachtById(@PathVariable long id) {
-	    Optional<OpdrachtDTO> optionalOpdracht = opdrachtService.findOpdrachtById(id);
-	    if (optionalOpdracht.isPresent()) {
-	        return ResponseEntity.ok(optionalOpdracht.get());
-	    } else {
-	        return ResponseEntity.notFound().build();
-	    }
+		Optional<OpdrachtDTO> optionalOpdracht = opdrachtService.findOpdrachtById(id);
+		if (optionalOpdracht.isPresent()) {
+			return ResponseEntity.ok(optionalOpdracht.get());
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 	@PostMapping
@@ -51,13 +55,19 @@ public class OpdrachtController {
 		return this.opdrachtService.createOrUpdate(opdracht);
 	}
 
-	@PostMapping("/{vacatureId}")
-	public Opdracht createOpdrachtVoorVacature(@PathVariable long vacatureId, @RequestBody Opdracht opdracht) {
-		Optional<Vacature> optionalVacature = vacatureService.findById(vacatureId);
+	@PostMapping("/{vacatureId}/{traineeId}")
+	public Opdracht createOpdrachtVoorVacature(@PathVariable long vacatureId, @PathVariable long traineeId,	@RequestBody Opdracht opdracht) {
 
+		Optional<Vacature> optionalVacature = vacatureService.findById(vacatureId);
 		if (optionalVacature.isPresent()) {
 			Vacature vacature = optionalVacature.get();
 			opdracht.setVacature(vacature);
+		}
+
+		Optional<Trainee> optionalTrainee = traineeService.findById(traineeId);
+		if (optionalTrainee.isPresent()) {
+			Trainee trainee = optionalTrainee.get();
+			opdracht.setTrainee(trainee);
 		}
 
 		return this.opdrachtService.createOrUpdate(opdracht);
