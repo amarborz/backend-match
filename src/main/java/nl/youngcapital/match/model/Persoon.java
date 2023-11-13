@@ -1,12 +1,13 @@
 package nl.youngcapital.match.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class Persoon {
+public abstract class Persoon {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -16,6 +17,11 @@ public class Persoon {
 	private String email;
 	private String foto;
 	private String telefoon;
+	
+	
+	
+	@Column(length = 100, nullable = true)
+	private String token;
 	
 	public long getId() {
 		return id;
@@ -50,4 +56,13 @@ public class Persoon {
 	public void setTelefoon(String telefoon) {
 		this.telefoon = telefoon;
 	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+	
+	public abstract String getRole();
+	
 }
