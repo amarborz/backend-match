@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.youngcapital.match.api.dto.VacatureDTO;
 import nl.youngcapital.match.model.Vacature;
 import nl.youngcapital.match.service.VacatureService;
 
@@ -25,20 +26,18 @@ public class VacatureController {
 	private VacatureService vacatureService;
 	
 	@GetMapping
-	public List<Vacature> findAll() {
-		return vacatureService.findAll();
+	public List<VacatureDTO> findAllVacatures() {
+	    return vacatureService.getAllVacatures();
 	}
-	
+
 	@GetMapping("{id}")
-	public ResponseEntity<Vacature> findById(@PathVariable long id) {
-		Optional<Vacature> optionalVacature = this.vacatureService.findById(id);
-		
-		if(optionalVacature.isPresent()) {
-			Vacature result = optionalVacature.get();
-			return ResponseEntity.ok(result);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+	public ResponseEntity<VacatureDTO> findVacatureById(@PathVariable long id) {
+	    Optional<VacatureDTO> optionalVacature = vacatureService.findVacatureById(id);
+	    if (optionalVacature.isPresent()) {
+	        return ResponseEntity.ok(optionalVacature.get());
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
 	
 	@PutMapping("{id}")
@@ -50,7 +49,8 @@ public class VacatureController {
 		}
 	
 		Vacature target = optionalTarget.get();
-		target.setStandplaats(input.getStandplaats());
+		target.setPlaats(input.getPlaats());
+		target.setAdres(input.getAdres());
 		target.setOmschrijving(input.getOmschrijving());
 		target.setVereisten(input.getVereisten());
 		target.setUren(input.getUren());

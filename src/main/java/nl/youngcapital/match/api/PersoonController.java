@@ -1,38 +1,58 @@
-//package nl.youngcapital.match.api;
-//
-//import nl.youngcapital.match.model.Persoon;
-//import nl.youngcapital.match.service.PersoonService;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.http.ResponseEntity;
-//import org.springframework.security.authentication.AuthenticationManager;
-//import org.springframework.security.core.userdetails.UserDetails;
-//import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//import org.springframework.web.bind.annotation.RestController;
-//
-//@RestController
-//@RequestMapping("/api/persoon")
-//public class PersoonController {
-//
-//    @Autowired
-//    private PersoonService persoonService;
-//
-//    @Autowired
-//    private AuthenticationManager authenticationManager;
-//
-//    @PostMapping("/login")
-//    public ResponseEntity<?> authenticateUser(@RequestBody Persoon loginRequest) {
-//        // Retrieve the user from the database
-//        UserDetails userDetails = persoonService.loadUserByUsername(loginRequest.getWachtwoord());
-//
-//        // Perform a simple authentication check
-//        if (userDetails != null && ((UserDetails) userDetails).getPassword().equals(loginRequest.getWachtwoord())) {
-//            // Return a success response (you might want to return a token or additional information)
-//            return ResponseEntity.ok().build();
-//        } else {
-//            // Return an authentication failure response
-//            return ResponseEntity.status(401).build();
-//        }
-//    }
-//}
+package nl.youngcapital.match.api;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import nl.youngcapital.match.api.dto.LoginDTO;
+import nl.youngcapital.match.api.dto.TraineeDTO;
+import nl.youngcapital.match.model.Opdrachtgever;
+import nl.youngcapital.match.model.Talentmanager;
+import nl.youngcapital.match.model.Trainee;
+import nl.youngcapital.match.service.OpdrachtgeverService;
+import nl.youngcapital.match.service.TalentmanagerService;
+import nl.youngcapital.match.service.TraineeService;
+
+@RestController
+@RequestMapping("api/persoon")
+public class PersoonController {
+	
+	@Autowired
+	private TraineeService traineeService;
+	
+	@Autowired
+	private TalentmanagerService talentmanagerService;
+	
+	@Autowired
+	private OpdrachtgeverService opdrachtgeverService;
+	
+	@GetMapping
+	public List<LoginDTO> findPersoon() {
+	    List<LoginDTO> loginDTO = new ArrayList<LoginDTO>();
+	    List<Trainee> trainees = traineeService.findAll();
+	    List<Talentmanager> talentmanagers = talentmanagerService.findAll();
+	    List<Opdrachtgever> opdrachtgevers = opdrachtgeverService.findAll();
+	    
+	    for (Trainee trainee : trainees) {
+	        LoginDTO login = new LoginDTO(trainee);
+	        loginDTO.add(login);
+	    }
+
+	    for (Talentmanager talentmanager : talentmanagers) {
+	        LoginDTO login = new LoginDTO(talentmanager);
+	        loginDTO.add(login);
+	    }
+
+	    for (Opdrachtgever opdrachtgever : opdrachtgevers) {
+	        LoginDTO login = new LoginDTO(opdrachtgever);
+	        loginDTO.add(login);
+	    }
+	    
+	    return loginDTO;
+	}
+}
+>>>>>>> 3947e59244cbcc00e84c121c8763effe16329d5c
