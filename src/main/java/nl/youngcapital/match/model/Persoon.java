@@ -1,9 +1,6 @@
 package nl.youngcapital.match.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.*;
 
 @MappedSuperclass
 public class Persoon {
@@ -12,7 +9,9 @@ public class Persoon {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private String naam;
+
 	private String wachtwoord;
+
 	private String email;
 	private String foto;
 	private String telefoon;

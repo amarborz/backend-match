@@ -22,10 +22,13 @@ import nl.youngcapital.match.service.LoonstrookService;
 @RestController
 @RequestMapping("api/loonstrook")
 public class LoonstrookController {
-	
-	@Autowired
-	private LoonstrookService loonstrookService;
-	
+
+	private final LoonstrookService loonstrookService;
+
+	public LoonstrookController(LoonstrookService loonstrookService) {
+		this.loonstrookService = loonstrookService;
+	}
+
 	@GetMapping
 	public List<Loonstrook> findAll() {
 		return loonstrookService.findAll();

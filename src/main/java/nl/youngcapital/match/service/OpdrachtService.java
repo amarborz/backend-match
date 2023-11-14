@@ -1,13 +1,12 @@
 package nl.youngcapital.match.service;
 
-import java.util.List;
-import java.util.Optional;
-
+import nl.youngcapital.match.model.Opdracht;
+import nl.youngcapital.match.persistence.OpdrachtRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import nl.youngcapital.match.model.Opdracht;
-import nl.youngcapital.match.persistence.OpdrachtRepository;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OpdrachtService {
