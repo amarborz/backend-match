@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import nl.youngcapital.match.api.dto.VacatureDTO;
+import nl.youngcapital.match.model.Opdrachtgever;
 import nl.youngcapital.match.model.Vacature;
+import nl.youngcapital.match.persistence.OpdrachtgeverRepository;
 import nl.youngcapital.match.persistence.VacatureRepository;
 
 @Service
@@ -16,6 +18,9 @@ public class VacatureService {
 	
 	@Autowired
 	private VacatureRepository vacatureRepository;
+	
+	@Autowired
+	private OpdrachtgeverRepository opdrachtgeverRepository;
 	
 	public List<Vacature> findAll() {
 		return vacatureRepository.findAll();
@@ -40,6 +45,14 @@ public class VacatureService {
 	}
 
 	public Vacature createOrUpdate(Vacature vacature) {
+		return this.vacatureRepository.save(vacature);
+	}
+	
+	public Vacature createAndLinkOpdrachtgever(Vacature vacature, long opdrachtgeverId) {
+		Optional<Opdrachtgever> opdrachtgever = opdrachtgeverRepository.findById(opdrachtgeverId);
+		if (opdrachtgever.isPresent()) {
+			vacature.setOpdrachtgever(opdrachtgever.get());
+		}
 		return this.vacatureRepository.save(vacature);
 	}
 	
