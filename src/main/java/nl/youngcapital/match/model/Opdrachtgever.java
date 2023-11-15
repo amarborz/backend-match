@@ -28,5 +28,9 @@ public class Opdrachtgever extends Persoon {
 	public void setVacatures(List<Vacature> vacatures) {
 		this.vacatures = vacatures;
 	}
-	
+
+	@Override
+	public String getRole() {
+		return "ROLE_OPDRACHTGEVER";
+	}
 }

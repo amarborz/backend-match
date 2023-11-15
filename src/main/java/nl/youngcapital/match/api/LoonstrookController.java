@@ -6,14 +6,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import nl.youngcapital.match.model.Loonstrook;
 import nl.youngcapital.match.service.LoonstrookService;
@@ -22,10 +15,13 @@ import nl.youngcapital.match.service.LoonstrookService;
 @RestController
 @RequestMapping("api/loonstrook")
 public class LoonstrookController {
-	
-	@Autowired
-	private LoonstrookService loonstrookService;
-	
+
+	private final LoonstrookService loonstrookService;
+
+	public LoonstrookController(LoonstrookService loonstrookService) {
+		this.loonstrookService = loonstrookService;
+	}
+
 	@GetMapping
 	public List<Loonstrook> findAll() {
 		return loonstrookService.findAll();

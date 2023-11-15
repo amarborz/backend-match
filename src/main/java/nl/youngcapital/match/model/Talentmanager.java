@@ -24,4 +24,9 @@ public class Talentmanager extends Persoon {
 	public void setTrainees(List<Trainee> trainees) {
 		this.trainees = trainees;
 	}	
+
+	@Override
+	public String getRole() {
+		return "ROLE_TALENTMANAGER";
+	}
 }
