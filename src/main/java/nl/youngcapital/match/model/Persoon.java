@@ -17,6 +17,8 @@ public class Persoon {
 	private String foto;
 	private String telefoon;
 	
+	private String token;
+	
 	public long getId() {
 		return id;
 	}
