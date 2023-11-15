@@ -70,6 +70,12 @@ public class VacatureController {
 		return this.vacatureService.createOrUpdate(vacature);
 	}
 	
+	@PostMapping("{opdrachtgeverId}")
+	public Vacature createAndAddOpdrachtgever(@PathVariable long opdrachtgeverId,@RequestBody Vacature vacature) {
+		return this.vacatureService.createAndLinkOpdrachtgever(vacature, opdrachtgeverId);
+	}
+	
+	
 	@DeleteMapping("{id}")
 	public void deleteById(@PathVariable long id) {
 		this.vacatureService.deleteById(id);

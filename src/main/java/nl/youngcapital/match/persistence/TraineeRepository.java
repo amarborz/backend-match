@@ -17,4 +17,6 @@ public interface TraineeRepository extends JpaRepository<Trainee, Long> {
 	
 	Optional<Trainee> findByEmail(String email);
 
+	Optional<Trainee> findByEmail(String email);
+
 }
