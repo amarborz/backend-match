@@ -2,6 +2,8 @@ package nl.youngcapital.match.service;
 
 import java.util.Optional;
 
+import nl.youngcapital.match.model.Opdrachtgever;
+import nl.youngcapital.match.model.Talentmanager;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,10 +44,42 @@ public class AuthenticationService {
 			}
 		}
 		
-		// TODO Talentmanager check
-		
-		// TODO Opdrachtgever check
-		
+		// Talentmanager check
+		Optional<Talentmanager> optionalTalentmanager = talentmanagerRepository.findByEmail(email);
+		if (optionalTalentmanager.isPresent()) {
+			Talentmanager talentmanager = optionalTalentmanager.get();
+
+			// Check passwd
+			if (password.equals(talentmanager.getWachtwoord())) {
+				// Token aanmaken
+				talentmanager.setToken(RandomStringUtils.random(100, true, true));
+
+				// Talentmanager opslaan
+				talentmanagerRepository.save(talentmanager);
+
+				// Token terug geven
+				return optionalTalentmanager;
+			}
+		}
+
+		// Opdrachtgever check
+		Optional<Opdrachtgever> optionalOpdrachtgever = opdrachtgeverRepository.findByEmail(email);
+		if (optionalOpdrachtgever.isPresent()) {
+			Opdrachtgever opdrachtgever = optionalOpdrachtgever.get();
+
+			// Check passwd
+			if (password.equals(opdrachtgever.getWachtwoord())) {
+				// Token aanmaken
+				opdrachtgever.setToken(RandomStringUtils.random(100, true, true));
+
+				// Opdrachtgever opslaan
+				opdrachtgeverRepository.save(opdrachtgever);
+
+				// Token terug geven
+				return optionalOpdrachtgever;
+			}
+		}
+
 		return Optional.empty();
 	}
 

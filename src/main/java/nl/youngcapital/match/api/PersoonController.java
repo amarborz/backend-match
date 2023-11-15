@@ -55,4 +55,3 @@ public class PersoonController {
 	    return loginDTO;
 	}
 }
->>>>>>> 3947e59244cbcc00e84c121c8763effe16329d5c

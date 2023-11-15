@@ -31,6 +31,6 @@ public class Opdrachtgever extends Persoon {
 
 	@Override
 	public String getRole() {
-		return "ROLE_OPDRCAHTGEVER";
+		return "ROLE_OPDRACHTGEVER";
 	}
 }
