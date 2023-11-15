@@ -56,7 +56,7 @@ public class OpdrachtController {
 	}
 
 	@PostMapping("/{vacatureId}/{traineeId}")
-	public Opdracht createOpdrachtVoorVacature(@PathVariable long vacatureId, @PathVariable long traineeId,	@RequestBody Opdracht opdracht) {
+	public ResponseEntity<OpdrachtDTO> createOpdrachtVoorVacature(@PathVariable long vacatureId, @PathVariable long traineeId,	@RequestBody Opdracht opdracht) {
 
 		Optional<Vacature> optionalVacature = vacatureService.findById(vacatureId);
 		if (optionalVacature.isPresent()) {
@@ -70,7 +70,9 @@ public class OpdrachtController {
 			opdracht.setTrainee(trainee);
 		}
 
-		return this.opdrachtService.createOrUpdate(opdracht);
+		Opdracht savedOpdracht = opdrachtService.createOrUpdate(opdracht);
+		Optional<OpdrachtDTO> optionalOpdracht = opdrachtService.findOpdrachtById(savedOpdracht.getId());
+		return ResponseEntity.ok(optionalOpdracht.get());
 	}
 
 	@PutMapping("{id}")
