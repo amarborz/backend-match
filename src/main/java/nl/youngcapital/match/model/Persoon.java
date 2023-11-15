@@ -23,6 +23,8 @@ public abstract class Persoon {
 	@Column(length = 100, nullable = true)
 	private String token;
 	
+	private String token;
+	
 	public long getId() {
 		return id;
 	}
