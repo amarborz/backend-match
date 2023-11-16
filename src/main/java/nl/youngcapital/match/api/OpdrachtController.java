@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
 import nl.youngcapital.match.api.dto.OpdrachtDTO;
 import nl.youngcapital.match.model.Opdracht;
+import nl.youngcapital.match.model.Persoon;
 import nl.youngcapital.match.model.Trainee;
 import nl.youngcapital.match.model.Vacature;
 import nl.youngcapital.match.service.OpdrachtService;
@@ -41,7 +43,19 @@ public class OpdrachtController {
 	}
 
 	@GetMapping("{id}")
-	public ResponseEntity<OpdrachtDTO> findOpdrachtById(@PathVariable long id) {
+	public ResponseEntity<OpdrachtDTO> findOpdrachtById( HttpServletRequest request, @PathVariable long id) {
+		// Haal de persoon op de uit request. Dit is gevuld door de AuthorizationFilter
+		Persoon p = (Persoon)request.getAttribute("YC_USER");
+
+		// Als persoon uit de request null is dan is er niemand ingelogd
+		if (p == null)
+			return ResponseEntity.status(403).build();
+
+		// Wij kunnen ook checken wat voor role diegene heeft en dan toelaten of weigeren
+		if (p.getRole().equals("ROLE_TRAINEE")) {
+
+		}
+
 		Optional<OpdrachtDTO> optionalOpdracht = opdrachtService.findOpdrachtById(id);
 		if (optionalOpdracht.isPresent()) {
 			return ResponseEntity.ok(optionalOpdracht.get());
