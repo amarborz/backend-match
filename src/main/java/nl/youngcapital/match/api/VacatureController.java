@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import nl.youngcapital.match.api.dto.OpdrachtenVanOpdrachtgeverDTO;
 import nl.youngcapital.match.api.dto.VacatureDTO;
 import nl.youngcapital.match.model.Vacature;
 import nl.youngcapital.match.service.VacatureService;
@@ -38,6 +39,16 @@ public class VacatureController {
 	    } else {
 	        return ResponseEntity.notFound().build();
 	    }
+	}
+	
+	@GetMapping("/opdrachtgever/{opdrachtgeverId}")
+	public ResponseEntity<List<VacatureDTO>> findVacatureByOpdrachtgeverId(@PathVariable long opdrachtgeverId) {
+		List<VacatureDTO> vacatures = vacatureService.findVacatureByOpdrachtgever(opdrachtgeverId);
+		if (!vacatures.isEmpty()) {
+			return ResponseEntity.ok(vacatures);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	@PutMapping("{id}")

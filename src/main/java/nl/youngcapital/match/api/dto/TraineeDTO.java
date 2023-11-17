@@ -24,6 +24,7 @@ public class TraineeDTO {
 		this.cv = trainee.getCv();
 		this.bio = trainee.getBio();
 		this.motivatie = trainee.getMotivatie();
+		this.woonplaats = trainee.getWoonplaats();
 	}
 
 	public long getId() {

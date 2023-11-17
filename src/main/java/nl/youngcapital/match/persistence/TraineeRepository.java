@@ -14,7 +14,7 @@ import nl.youngcapital.match.model.Vacature;
 public interface TraineeRepository extends JpaRepository<Trainee, Long> {
 
 	List<Trainee> findByTalentmanager(Talentmanager talentmanager);
-
+	
 	Optional<Trainee> findByEmail(String email);
 
 }
