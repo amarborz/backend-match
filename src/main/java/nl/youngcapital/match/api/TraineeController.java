@@ -69,7 +69,6 @@ public class TraineeController {
 	
 		Trainee target = optionalTarget.get();
 		target.setNaam(input.getNaam());
-		target.setWachtwoord(input.getWachtwoord());
 		target.setEmail(input.getEmail());
 		target.setFoto(input.getFoto());
 		target.setTelefoon(input.getTelefoon());
