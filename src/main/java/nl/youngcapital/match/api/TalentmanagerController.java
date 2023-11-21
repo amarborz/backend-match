@@ -83,7 +83,6 @@ public class TalentmanagerController {
 
 		Talentmanager target = optionalTarget.get();
 		target.setNaam(input.getNaam());
-		target.setWachtwoord(input.getWachtwoord());
 		target.setEmail(input.getEmail());
 		target.setFoto(input.getFoto());
 		target.setTelefoon(input.getTelefoon());
@@ -102,6 +101,21 @@ public class TalentmanagerController {
 		Talentmanager updated = this.talentmanagerService.createOrUpdate(target);
 		return ResponseEntity.ok(updated);
 	}
+	@PutMapping("password/{id}")
+	public ResponseEntity<Talentmanager> updatePasswordById(@PathVariable long id, @RequestBody Talentmanager input) {
+		Optional<Talentmanager> optionalTarget = this.talentmanagerService.findById(id);
+
+		if (optionalTarget.isEmpty()) {
+			return ResponseEntity.notFound().build();
+		}
+
+		Talentmanager target = optionalTarget.get();
+		target.setWachtwoord(input.getWachtwoord());
+
+		Talentmanager updated = this.talentmanagerService.createOrUpdate(target);
+		return ResponseEntity.ok(updated);
+	}
+	
 
 	@DeleteMapping("{id}")
 	public void deleteById(@PathVariable long id) {

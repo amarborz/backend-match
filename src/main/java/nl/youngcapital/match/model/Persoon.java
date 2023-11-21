@@ -13,9 +13,7 @@ public abstract class Persoon {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private String naam;
-
 	private String wachtwoord;
-
 	private String email;
 	private String foto;
 	private String telefoon;
