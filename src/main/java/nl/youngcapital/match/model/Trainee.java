@@ -57,10 +57,10 @@ public class Trainee extends Persoon {
 	public void setBio(String bio) {
 		this.bio = bio;
 	}
-	public String getPlaats() {
+	public String getWoonplaats() {
 		return woonplaats;
 	}
-	public void setPlaats(String plaats) {
+	public void setWoonplaats(String plaats) {
 		this.woonplaats = plaats;
 	}
 	public Talentmanager getTalentmanager() {

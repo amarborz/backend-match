@@ -77,6 +77,7 @@ public class TraineeController {
 		target.setRichting(input.getRichting());
 		target.setCv(input.getCv());
 		target.setBio(input.getBio());
+		target.setWoonplaats(input.getWoonplaats());
 		
 		Trainee updated = this.traineeService.createOrUpdate(target);
 		return ResponseEntity.ok(updated);
