@@ -88,7 +88,7 @@ public class OpdrachtgeverController {
 
 	}
 	
-	@PutMapping("/password/{id}")
+	@PutMapping("password/{id}")
 	public ResponseEntity<Opdrachtgever> updatePasswordById(@PathVariable long id, @RequestBody Opdrachtgever input) {
 		Optional<Opdrachtgever> optionalTarget = this.opdrachtgeverService.findById(id);
 
