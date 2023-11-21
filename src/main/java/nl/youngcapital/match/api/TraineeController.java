@@ -24,26 +24,25 @@ import nl.youngcapital.match.service.TraineeService;
 @RestController
 @RequestMapping("api/trainee")
 public class TraineeController {
-	
+
 	@Autowired
 	private TraineeService traineeService;
-	
-	
+
 	@GetMapping
 	public List<TraineeDTO> findAllTrainees() {
-	    return traineeService.getAllTrainees();
+		return traineeService.getAllTrainees();
 	}
 
 	@GetMapping("{id}")
 	public ResponseEntity<TraineeDTO> findTraineeById(@PathVariable long id) {
-	    Optional<TraineeDTO> optionalTrainee = traineeService.findTraineeById(id);
-	    if (optionalTrainee.isPresent()) {
-	        return ResponseEntity.ok(optionalTrainee.get());
-	    } else {
-	        return ResponseEntity.notFound().build();
-	    }
+		Optional<TraineeDTO> optionalTrainee = traineeService.findTraineeById(id);
+		if (optionalTrainee.isPresent()) {
+			return ResponseEntity.ok(optionalTrainee.get());
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
-	
+
 	@GetMapping("{id}/opdrachten")
 	public ResponseEntity<List<OpdrachtenVanTraineeDTO>> findOpdrachtenByTraineeId(@PathVariable long id) {
 		List<OpdrachtenVanTraineeDTO> opdrachten = traineeService.findOpdrachtenByTraineeId(id);
@@ -53,20 +52,20 @@ public class TraineeController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
+
 	@PostMapping
 	public Trainee create(@RequestBody Trainee trainee) {
 		return this.traineeService.createOrUpdate(trainee);
 	}
-	
+
 	@PutMapping("{id}")
 	public ResponseEntity<Trainee> updateById(@PathVariable long id, @RequestBody Trainee input) {
 		Optional<Trainee> optionalTarget = this.traineeService.findById(id);
-		
+
 		if (optionalTarget.isEmpty()) {
 			return null;
 		}
-	
+
 		Trainee target = optionalTarget.get();
 		target.setNaam(input.getNaam());
 		target.setEmail(input.getEmail());
@@ -77,6 +76,21 @@ public class TraineeController {
 		target.setCv(input.getCv());
 		target.setBio(input.getBio());
 		target.setWoonplaats(input.getWoonplaats());
+
+		Trainee updated = this.traineeService.createOrUpdate(target);
+		return ResponseEntity.ok(updated);
+	}
+
+	@PutMapping("password/{id}")
+	public ResponseEntity<Trainee> updatePasswordById(@PathVariable long id, @RequestBody Trainee input) {
+		Optional<Trainee> optionalTarget = this.traineeService.findById(id);
+		
+		if (optionalTarget.isEmpty()) {
+			return null;
+		}
+	
+		Trainee target = optionalTarget.get();
+		target.setWachtwoord(input.getWachtwoord());
 		
 		Trainee updated = this.traineeService.createOrUpdate(target);
 		return ResponseEntity.ok(updated);
@@ -86,5 +100,5 @@ public class TraineeController {
 	public void deleteById(@PathVariable long id) {
 		this.traineeService.deleteById(id);
 	}
-	
+
 }
