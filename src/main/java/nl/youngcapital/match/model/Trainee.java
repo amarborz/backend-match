@@ -60,13 +60,9 @@ public class Trainee extends Persoon {
 	public String getWoonplaats() {
 		return woonplaats;
 	}
-<<<<<<< HEAD
-	public void setWoonplaats(String plaats) {
-		this.woonplaats = plaats;
-=======
+
 	public void setWoonplaats(String woonplaats) {
 		this.woonplaats = woonplaats;
->>>>>>> 101e866911bf42731d89839ea89c3c46cf39a9be
 	}
 	public Talentmanager getTalentmanager() {
 		return talentmanager;
