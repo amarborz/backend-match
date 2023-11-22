@@ -9,19 +9,41 @@ public class OpdrachtDTO {
 	private String status;
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
+	private long vacatureId;
+	private long traineeId;
+	private long opdrachtgeverId;
 	
 	public OpdrachtDTO(Opdracht opdracht) {
 		this.id = opdracht.getId();
 		this.status = opdracht.getStatus();
 		this.startDatum = opdracht.getStartDatum();
 		this.eindDatum = opdracht.getEindDatum();
+		this.vacatureId = opdracht.getVacature().getId();
+		this.traineeId = opdracht.getTrainee().getId();
+		this.opdrachtgeverId = opdracht.getVacature().getOpdrachtgever().getId();
 	}
-
 	
+	public long getOpdrachtgeverId() {
+		return opdrachtgeverId;
+	}
+	public void setOpdrachtgeverId(long opdrachtgeverId) {
+		this.opdrachtgeverId = opdrachtgeverId;
+	}
+	public long getVacatureId() {
+		return vacatureId;
+	}
+	public void setVacatureId(long vacatureId) {
+		this.vacatureId = vacatureId;
+	}
+	public long getTraineeId() {
+		return traineeId;
+	}
+	public void setTraineeId(long traineeId) {
+		this.traineeId = traineeId;
+	}
 	public long getId() {
 		return id;
 	}
-	
 	public void setId(long id) {
 		this.id = id;
 	}
