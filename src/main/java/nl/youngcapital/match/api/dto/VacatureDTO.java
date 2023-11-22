@@ -16,6 +16,7 @@ public class VacatureDTO {
 	private LocalDate publicatieDatum;
 	private LocalDate startDatum;
 	private LocalDate eindDatum;
+	private String opdrachtgeverNaam;
 
 	public VacatureDTO(Vacature vacature) {
 		this.id = vacature.getId();
@@ -29,6 +30,8 @@ public class VacatureDTO {
 		this.publicatieDatum = vacature.getPublicatieDatum();
 		this.startDatum = vacature.getStartDatum();
 		this.eindDatum = vacature.getEindDatum();
+		this.opdrachtgeverNaam = vacature.getOpdrachtgever().getNaam();
+		
 	}
 
 	public long getId() {
@@ -39,6 +42,13 @@ public class VacatureDTO {
 		this.id = id;
 	}
 
+	public String getOpdrachtgeverNaam() {
+		return opdrachtgeverNaam;
+	}
+
+	public void setOpdrachtgeverNaam(String opdrachtgeverNaam) {
+		this.opdrachtgeverNaam = opdrachtgeverNaam;
+	}
 
 	public String getPlaats() {
 		return plaats;
