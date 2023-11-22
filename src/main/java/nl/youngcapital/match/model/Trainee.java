@@ -85,7 +85,6 @@ public class Trainee extends Persoon {
 	public void addLoonstrook(Loonstrook ls) {
 		this.loonstroken.add(ls);
 	}
-	
 	@Override
 	public String getRole() {
 		return "ROLE_TRAINEE";
