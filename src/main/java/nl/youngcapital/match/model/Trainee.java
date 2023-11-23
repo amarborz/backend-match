@@ -57,11 +57,12 @@ public class Trainee extends Persoon {
 	public void setBio(String bio) {
 		this.bio = bio;
 	}
-	public String getPlaats() {
+	public String getWoonplaats() {
 		return woonplaats;
 	}
-	public void setPlaats(String plaats) {
-		this.woonplaats = plaats;
+
+	public void setWoonplaats(String woonplaats) {
+		this.woonplaats = woonplaats;
 	}
 	public Talentmanager getTalentmanager() {
 		return talentmanager;
@@ -84,7 +85,6 @@ public class Trainee extends Persoon {
 	public void addLoonstrook(Loonstrook ls) {
 		this.loonstroken.add(ls);
 	}
-	
 	@Override
 	public String getRole() {
 		return "ROLE_TRAINEE";

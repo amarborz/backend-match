@@ -78,7 +78,6 @@ public class OpdrachtgeverController {
 
 		Opdrachtgever target = optionalTarget.get();
 		target.setNaam(input.getNaam());
-		target.setWachtwoord(input.getWachtwoord());
 		target.setEmail(input.getEmail());
 		target.setFoto(input.getFoto());
 		target.setTelefoon(input.getTelefoon());
@@ -88,6 +87,23 @@ public class OpdrachtgeverController {
 		return ResponseEntity.ok(updated);
 
 	}
+	
+	@PutMapping("password/{id}")
+	public ResponseEntity<Opdrachtgever> updatePasswordById(@PathVariable long id, @RequestBody Opdrachtgever input) {
+		Optional<Opdrachtgever> optionalTarget = this.opdrachtgeverService.findById(id);
+
+		if (optionalTarget.isEmpty()) {
+			return null;
+		}
+
+		Opdrachtgever target = optionalTarget.get();
+		target.setWachtwoord(input.getWachtwoord());
+
+		Opdrachtgever updated = this.opdrachtgeverService.createOrUpdate(target);
+		return ResponseEntity.ok(updated);
+
+	}
+	
 
 	@DeleteMapping("{id}")
 	public void deleteById(@PathVariable long id) {

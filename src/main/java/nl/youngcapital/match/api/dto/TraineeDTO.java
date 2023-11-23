@@ -1,6 +1,10 @@
 package nl.youngcapital.match.api.dto;
 
+import jakarta.persistence.OneToMany;
+import nl.youngcapital.match.model.Loonstrook;
 import nl.youngcapital.match.model.Trainee;
+
+import java.util.List;
 
 public class TraineeDTO {
 	private long id;
@@ -13,6 +17,9 @@ public class TraineeDTO {
 	private String bio;
 	private String motivatie;
 	private String woonplaats;
+
+	@OneToMany
+	private List<Loonstrook> loonstroken;
 	
 	public TraineeDTO(Trainee trainee) {
 		this.id = trainee.getId();
@@ -24,6 +31,8 @@ public class TraineeDTO {
 		this.cv = trainee.getCv();
 		this.bio = trainee.getBio();
 		this.motivatie = trainee.getMotivatie();
+		this.woonplaats = trainee.getWoonplaats();
+		this.loonstroken = trainee.getLoonstroken();
 	}
 
 	public long getId() {
@@ -104,6 +113,18 @@ public class TraineeDTO {
 
 	public void setWoonplaats(String woonplaats) {
 		this.woonplaats = woonplaats;
+	}
+
+	public List<Loonstrook> getLoonstroken() {
+		return loonstroken;
+	}
+
+	public void setLoonstroken(List<Loonstrook> loonstroken) {
+		this.loonstroken = loonstroken;
+	}
+
+	public void addLoonstrook(Loonstrook ls) {
+		this.loonstroken.add(ls);
 	}
 	
 }
