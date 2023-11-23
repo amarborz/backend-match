@@ -13,6 +13,9 @@ public class OpdrachtenVanOpdrachtgeverDTO {
 	private String foto;
 	private String telefoon;
 	private String richting;
+	private String bio;
+	private String cv;
+	private String motivatie;
 	
 	private long opdrachtId;
 	private String status;
@@ -29,6 +32,9 @@ public class OpdrachtenVanOpdrachtgeverDTO {
 		this.foto = trainee.getFoto();
 		this.telefoon = trainee.getTelefoon();
 		this.richting = trainee.getRichting();
+		this.bio = trainee.getBio();
+		this.cv = trainee.getCv();
+		this.motivatie = trainee.getMotivatie();
 		
 		this.opdrachtId = opdracht.getId();
 		this.status = opdracht.getStatus();
@@ -104,6 +110,33 @@ public class OpdrachtenVanOpdrachtgeverDTO {
 	public void setRichting(String richting) {
 		this.richting = richting;
 	}
+
+	
+	public String getBio() {
+		return bio;
+	}
+
+
+	public void setBio(String bio) {
+		this.bio = bio;
+	}
+
+	public String getCv() {
+		return cv;
+	}
+
+	public void setCv(String cv) {
+		this.cv = cv;
+	}
+
+	public String getMotivatie() {
+		return motivatie;
+	}
+
+	public void setMotivatie(String motivatie) {
+		this.motivatie = motivatie;
+	}
+
 
 	public String getStatus() {
 		return status;
