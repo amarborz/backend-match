@@ -1,12 +1,14 @@
 package nl.youngcapital.match.api.dto;
 
-import jakarta.persistence.OneToMany;
-import nl.youngcapital.match.model.Loonstrook;
-import nl.youngcapital.match.model.Trainee;
-
 import java.util.List;
 
+import jakarta.persistence.OneToMany;
+import nl.youngcapital.match.model.Loonstrook;
+import nl.youngcapital.match.model.Talentmanager;
+import nl.youngcapital.match.model.Trainee;
+
 public class TraineeDTO {
+
 	private long id;
 	private String naam;
 	private String email;
@@ -18,9 +20,11 @@ public class TraineeDTO {
 	private String motivatie;
 	private String woonplaats;
 
+	private TalentmanagerDTO talentmanagerDTO;
+
 	@OneToMany
 	private List<Loonstrook> loonstroken;
-	
+
 	public TraineeDTO(Trainee trainee) {
 		this.id = trainee.getId();
 		this.naam = trainee.getNaam();
@@ -33,6 +37,11 @@ public class TraineeDTO {
 		this.motivatie = trainee.getMotivatie();
 		this.woonplaats = trainee.getWoonplaats();
 		this.loonstroken = trainee.getLoonstroken();
+
+		Talentmanager tm = trainee.getTalentmanager();
+		if (tm != null) {
+			this.talentmanagerDTO = new TalentmanagerDTO(trainee.getTalentmanager());
+		}
 	}
 
 	public long getId() {
@@ -42,7 +51,7 @@ public class TraineeDTO {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+
 	public String getNaam() {
 		return naam;
 	}
@@ -126,5 +135,13 @@ public class TraineeDTO {
 	public void addLoonstrook(Loonstrook ls) {
 		this.loonstroken.add(ls);
 	}
-	
+
+	public TalentmanagerDTO getTalentmanagerDTO() {
+		return talentmanagerDTO;
+	}
+
+	public void setTalentmanagerDTO(TalentmanagerDTO talentmanagerDTO) {
+		this.talentmanagerDTO = talentmanagerDTO;
+	}
+
 }
