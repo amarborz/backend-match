@@ -89,8 +89,6 @@ public class TalentmanagerService {
 						traineeStatusDTO
 								.add(new TraineeStatusVanTalentmanagersDTO(opdracht, opdrachtgever, trainee, vacature));
 					}
-				} else {
-					traineeStatusDTO.add(new TraineeStatusVanTalentmanagersDTO(trainee));
 				}
 			}
 		}
