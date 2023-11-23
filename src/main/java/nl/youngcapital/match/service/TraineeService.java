@@ -7,10 +7,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import nl.youngcapital.match.api.dto.OpdrachtenVanOpdrachtgeverDTO;
 import nl.youngcapital.match.api.dto.OpdrachtenVanTraineeDTO;
 import nl.youngcapital.match.api.dto.TraineeDTO;
-import nl.youngcapital.match.api.dto.VacatureDTO;
 import nl.youngcapital.match.model.Opdracht;
 import nl.youngcapital.match.model.Opdrachtgever;
 import nl.youngcapital.match.model.Trainee;
@@ -42,6 +40,7 @@ public class TraineeService {
 
 	public Optional<TraineeDTO> findTraineeById(long id) {
 		Optional<Trainee> trainee = traineeRepository.findById(id);
+
 		return trainee.map(TraineeDTO::new);
 	}
 
