@@ -43,7 +43,7 @@ public class OpdrachtController {
 	}
 
 	@GetMapping("{id}")
-	public ResponseEntity<OpdrachtDTO> findOpdrachtById(, @PathVariable long id) {
+	public ResponseEntity<OpdrachtDTO> findOpdrachtById(@PathVariable long id) {
 		Optional<OpdrachtDTO> optionalOpdracht = opdrachtService.findOpdrachtById(id);
 		if (optionalOpdracht.isPresent()) {
 			return ResponseEntity.ok(optionalOpdracht.get());
